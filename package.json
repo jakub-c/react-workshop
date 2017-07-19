@@ -10,6 +10,10 @@
     "type": "git",
     "url": "https://danfoss.visualstudio.com/WDF/_git/react-boilerplate"
   },
-  "author": "Jakub Ciolsowski <jakub@danfoss.com>",
-  "license": "ISC"
+  "author": "Danfoss A/S",
+  "contributors": [{
+    "name": "Jakub Ciolsowski",
+    "email": "jakub@danfoss.com"
+  }],
+  "license": "UNLICENSED"
 }
