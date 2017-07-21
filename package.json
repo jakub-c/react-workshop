@@ -7,7 +7,7 @@
     "start": "webpack-dev-server",
     "build": "./node_modules/.bin/webpack",
     "format": "./node_modules/.bin/prettier --write --single-quote --print-width=120 --tab-width=2 \"js/**/*.{js,jsx}\"",
-    "lint": "node_modules/.bin/eslint **/*.{js,jsx}  --quiet",
+    "lint": "node_modules/.bin/eslint **/*.{js,jsx}",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +23,7 @@
   ],
   "license": "UNLICENSED",
   "devDependencies": {
+    "babel-eslint": "7.2.3",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.2",
     "eslint-config-prettier": "2.3.0",
