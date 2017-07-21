@@ -20,5 +20,19 @@ module.exports = {
     colors: true,
     reasons: true,
     chunks: true
+  },
+  module: {
+    rules: [
+      {
+        enforce: "pre",
+        test: /\.jsx?$/,
+        loader: "eslint-loader",
+        exclude: /node-modules/
+      },
+      {
+        test: /\.jsx?$/,
+        loader: "babel-loader"
+      }
+    ]
   }
 };
