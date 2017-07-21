@@ -11,6 +11,7 @@ module.exports = {
     publicPath: "/dist/"
   },
   devServer: {
+    contentBase: "./source/static",
     publicPath: "/dist/"
   },
   resolve: {
