@@ -1,0 +1,19 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "Example React project showcasing modern tooling and best practices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://danfoss.visualstudio.com/WDF/_git/react-boilerplate"
+  },
+  "author": "Danfoss A/S",
+  "contributors": [{
+    "name": "Jakub Ciolsowski",
+    "email": "jakub@danfoss.com"
+  }],
+  "license": "UNLICENSED"
+}
