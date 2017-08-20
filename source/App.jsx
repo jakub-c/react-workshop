@@ -1,6 +1,25 @@
-import React from "react";
+import React, { Component } from "react";
 import { render } from "react-dom";
+import PropTypes from "prop-types";
 
-const HelloWorld = () => <h1>Hello World</h1>;
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: "Copenhagen" };
+  }
 
-render(<HelloWorld />, document.getElementById("app"));
+  render() {
+    return <City name={this.state.name} />;
+  }
+}
+
+const City = props =>
+  <div>
+    {props.name}
+  </div>;
+
+City.propTypes = {
+  name: PropTypes.string
+};
+
+render(<App />, document.getElementById("app"));
