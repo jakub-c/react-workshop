@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import axios from "axios";
-import { HashRouter, Route } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 import CityList from "./CityList";
+import CityDetails from "./CityDetails";
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      cities: []
+      cities: [{ name: "empty" }]
     };
   }
   componentDidMount() {
@@ -25,12 +26,24 @@ class App extends Component {
   render() {
     return (
       <HashRouter>
-        <Route
-          exact
-          path="/"
-          component={() => <CityList cities={this.state.cities} />}
-          // component={CityList}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => <CityList cities={this.state.cities} />}
+          />
+          <Route
+            path="/details/:name"
+            component={props => {
+              const paramName = props.match.params.name;
+              const cityIndex = this.state.cities.findIndex(
+                obj => obj.name === paramName
+              );
+              if (cityIndex === -1) return false;
+              return <CityDetails city={this.state.cities[cityIndex]} />;
+            }}
+          />
+        </Switch>
       </HashRouter>
     );
   }
