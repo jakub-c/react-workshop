@@ -11,7 +11,15 @@ class App extends Component {
     super();
 
     this.state = {
-      cities: [{ name: "empty" }]
+      cities: [
+        {
+          id: 0,
+          name: "empty",
+          main: {
+            temp: 0
+          }
+        }
+      ]
     };
   }
   componentDidMount() {
