@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import PropTypes from "prop-types";
 import axios from "axios";
+
+import CityInfo from "./CityInfo";
 
 class App extends Component {
   constructor() {
@@ -22,25 +23,14 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.cities);
     return (
       <div>
         {this.state.cities.map(city =>
-          <City key={city.id} name={city.name} temp={city.main.temp} />
+          <CityInfo key={city.id} name={city.name} temp={city.main.temp} />
         )}
       </div>
     );
   }
 }
-
-const City = props =>
-  <div>
-    {props.name} {props.temp}
-  </div>;
-
-City.propTypes = {
-  name: PropTypes.string,
-  temp: PropTypes.number
-};
 
 render(<App />, document.getElementById("app"));
