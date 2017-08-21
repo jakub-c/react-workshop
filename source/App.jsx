@@ -3,14 +3,18 @@ import { render } from "react-dom";
 import axios from "axios";
 
 import CityInfo from "./CityInfo";
+import AdminPanel from "./AdminPanel";
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      cities: []
+      cities: [],
+      searchQuery: ""
     };
+
+    this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
   }
   componentDidMount() {
     axios
@@ -21,13 +25,21 @@ class App extends Component {
         this.setState({ cities: response.data.list });
       });
   }
-
+  handleSearchTermChange(event) {
+    this.setState({ searchQuery: event.target.value });
+  }
   render() {
     return (
       <div>
-        {this.state.cities.map(city =>
-          <CityInfo key={city.id} name={city.name} temp={city.main.temp} />
-        )}
+        <AdminPanel
+          searchTerm={this.state.searchQuery}
+          handleSearchTermChange={this.handleSearchTermChange}
+        />
+        {this.state.cities
+          .filter(city => city.name.includes(this.state.searchQuery))
+          .map(city =>
+            <CityInfo key={city.id} name={city.name} temp={city.main.temp} />
+          )}
       </div>
     );
   }
