@@ -36,7 +36,9 @@ class App extends Component {
           handleSearchTermChange={this.handleSearchTermChange}
         />
         {this.state.cities
-          .filter(city => city.name.includes(this.state.searchQuery))
+          .filter(city =>
+            city.name.toLowerCase().includes(this.state.searchQuery)
+          )
           .map(city =>
             <CityInfo key={city.id} name={city.name} temp={city.main.temp} />
           )}
