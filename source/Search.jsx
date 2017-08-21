@@ -6,13 +6,13 @@ const Search = props =>
     <input
       type="text"
       onChange={props.handleSearchTermChange}
-      value={props.searchTerm}
+      value={props.searchQuery}
     />
   </div>;
 
 Search.propTypes = {
   handleSearchTermChange: PropTypes.func.isRequired,
-  searchTerm: PropTypes.string.isRequired
+  searchQuery: PropTypes.string.isRequired
 };
 
 export default Search;

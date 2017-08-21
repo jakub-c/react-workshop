@@ -5,13 +5,13 @@ import Search from "./Search";
 
 const AdminPanel = props =>
   <Search
-    searchTerm={props.searchTerm}
+    searchQuery={props.searchQuery}
     handleSearchTermChange={props.handleSearchTermChange}
   />;
 
 AdminPanel.propTypes = {
   handleSearchTermChange: PropTypes.func.isRequired,
-  searchTerm: PropTypes.string.isRequired
+  searchQuery: PropTypes.string.isRequired
 };
 
 export default AdminPanel;

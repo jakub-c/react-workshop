@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import axios from "axios";
+import { HashRouter, Route } from "react-router-dom";
 
-import CityInfo from "./CityInfo";
-import AdminPanel from "./AdminPanel";
+import CityList from "./CityList";
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      cities: [],
-      searchQuery: ""
+      cities: []
     };
-
-    this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
   }
   componentDidMount() {
     axios
@@ -25,24 +22,16 @@ class App extends Component {
         this.setState({ cities: response.data.list });
       });
   }
-  handleSearchTermChange(event) {
-    this.setState({ searchQuery: event.target.value });
-  }
   render() {
     return (
-      <div>
-        <AdminPanel
-          searchTerm={this.state.searchQuery}
-          handleSearchTermChange={this.handleSearchTermChange}
+      <HashRouter>
+        <Route
+          exact
+          path="/"
+          component={() => <CityList cities={this.state.cities} />}
+          // component={CityList}
         />
-        {this.state.cities
-          .filter(city =>
-            city.name.toLowerCase().includes(this.state.searchQuery)
-          )
-          .map(city =>
-            <CityInfo key={city.id} name={city.name} temp={city.main.temp} />
-          )}
-      </div>
+      </HashRouter>
     );
   }
 }
